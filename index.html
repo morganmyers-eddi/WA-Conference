@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI in K-12: A Working Session for Washington District Leaders</title>
+<style>
+  :root {
+    --navy: #23284A;
+    --yellow: #FFC933;
+    --yellow-bright: #FFD54F;
+    --yellow-deep: #F5A623;
+    --cream: #FFF8E6;
+    --accent: #F5A623;
+    --bg: #FFFEFB;
+    --card-bg: #FFFFFF;
+    --text: #292A33;
+    --muted: #6B6F7D;
+    --border: #F2E7C4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 40px; }
+
+  /* Header */
+  header {
+    background: #FFFFFF;
+    color: var(--navy);
+    padding: 26px 0;
+    box-shadow: 0 1px 0 rgba(35,40,74,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  .logo img {
+    height: 32px;
+    width: auto;
+  }
+  nav.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .partners-inline {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .btn-header {
+    display: inline-block;
+    background: var(--navy);
+    color: #FFF8E6;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 12px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-header:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(35,40,74,0.25); }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #FFF6DF 0%, #FFE7A8 55%, #FFD866 100%);
+    color: var(--navy);
+    padding: 120px 0 100px;
+  }
+  .eyebrow {
+    display: inline-block;
+    background: rgba(35,40,74,0.08);
+    border: 1px solid rgba(35,40,74,0.18);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    color: var(--navy);
+  }
+  .hero h1 {
+    font-size: 3.1rem;
+    font-weight: 800;
+    max-width: 820px;
+    margin-bottom: 26px;
+    line-height: 1.15;
+    color: var(--navy);
+  }
+  .hero p.lead {
+    font-size: 1.25rem;
+    max-width: 660px;
+    color: #3D3F5C;
+    margin-bottom: 48px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 52px;
+  }
+  .hero-meta div { min-width: 150px; }
+  .hero-meta .label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #6B5E1F;
+    margin-bottom: 6px;
+  }
+  .hero-meta .value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: #FFF8E6;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(35,40,74,0.3); }
+  .btn-secondary {
+    background: transparent;
+    border: 1.5px solid rgba(35,40,74,0.4);
+    color: var(--navy);
+    margin-left: 16px;
+  }
+  .btn-secondary:hover { background: rgba(35,40,74,0.08); box-shadow: none; }
+
+  /* Sections */
+  section { padding: 100px 0; }
+  h2 {
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--navy);
+  }
+  .section-sub {
+    color: var(--muted);
+    max-width: 700px;
+    margin-bottom: 56px;
+    font-size: 1.1rem;
+  }
+
+  .intro {
+    background: var(--card-bg);
+  }
+  .intro p { max-width: 780px; margin-bottom: 22px; font-size: 1.12rem; color: var(--text); }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro p.emphasis { font-style: italic; font-weight: 700; }
+
+  .benefits { background: #FFFBEE; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .card .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  .card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--navy);
+  }
+  .card p { color: var(--muted); font-size: 1.02rem; }
+
+  .details { background: var(--card-bg); }
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .detail-item {
+    border-top: 4px solid var(--accent);
+    padding-top: 20px;
+  }
+  .detail-item .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .detail-item .value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .detail-item .value small {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .agenda { background: #FFFBEE; }
+  .agenda-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .agenda-day {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .agenda-day h3 {
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .agenda-list { list-style: none; }
+  .agenda-list li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  .agenda-list li:first-child { border-top: none; padding-top: 0; }
+  .agenda-list .time {
+    min-width: 92px;
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 0.95rem;
+  }
+  .agenda-list .event { color: var(--muted); font-size: 0.98rem; }
+
+  .cta-band {
+    background: linear-gradient(135deg, #FFE7A8, #FFD866);
+    color: var(--navy);
+    text-align: center;
+    padding: 100px 0;
+  }
+  .cta-band h2 { color: var(--navy); margin-bottom: 16px; }
+  .cta-band p { color: #3D3F5C; max-width: 580px; margin: 0 auto 44px; font-size: 1.12rem; }
+
+  footer {
+    background: var(--navy);
+    color: #C7CBDA;
+    padding: 56px 0;
+    font-size: 0.95rem;
+  }
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  footer .partners { font-weight: 600; color: #fff; }
+  footer a.contact { color: var(--yellow); text-decoration: none; font-weight: 700; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 24px; }
+    .partners-inline { display: none; }
+    nav.header-nav { gap: 0; }
+    .hero { padding: 80px 0 64px; }
+    .hero h1 { font-size: 2.1rem; }
+    section { padding: 64px 0; }
+    .grid { grid-template-columns: 1fr; }
+    .details-grid { grid-template-columns: 1fr; gap: 32px; }
+    .agenda-grid { grid-template-columns: 1fr; gap: 24px; }
+    .btn-secondary { margin-left: 0; margin-top: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><img src="assets/eddi-logo-full.png" alt="Eddi logo"></div>
+    <nav class="header-nav">
+      <div class="partners-inline">in collaboration with WSIPC &amp; WSPEF</div>
+      <a class="btn-header" href="https://rizta.share.hsforms.com/2N2P-NY6SSoq2KuOa0isfAg" target="_blank" rel="noopener">Register</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Washington District Leaders &middot; Working Session</span>
+    <h1>Building a Real Roadmap for Agentic AI in K-12</h1>
+    <p class="lead">A small, working session for Washington district leaders to move past the noise on AI and build a concrete plan for their own district &mdash; alongside peers walking the same path.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="label">Dates</div>
+        <div class="value">September 16&ndash;17, 2026</div>
+      </div>
+      <div>
+        <div class="label">Location</div>
+        <div class="value">Renton, WA</div>
+      </div>
+      <div>
+        <div class="label">Cost</div>
+        <div class="value">Free to attend</div>
+      </div>
+      <div>
+        <div class="label">Hosted by</div>
+        <div class="value">Eddi, WSIPC &amp; WSPEF</div>
+      </div>
+    </div>
+    <a class="btn" href="https://rizta.share.hsforms.com/2N2P-NY6SSoq2KuOa0isfAg" target="_blank" rel="noopener">Register Now</a>
+    <a class="btn btn-secondary" href="#details">See Details</a>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <h2>Why This Room, Why Now</h2>
+    <p>Are your district's AI pilots, tools, and investments adding up to a clear direction&mdash;or do they need to be connected by a shared plan? On September 16&ndash;17 in Renton, Eddi, WSIPC, and WSPEF are bringing together a small group of Washington district leaders to build that plan together.</p>
+    <p>We're keeping the room intentionally small, and we'll lock in the venue once we have a clear headcount. Your early registration is what lets us move forward.</p>
+    <p class="emphasis">There's no cost to attend. Your cooperative exists to help you use your data, and this is the next step in that journey. If you're able, bring a colleague or two to carry the work home.</p>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap">
+    <h2>What You'll Walk Away With</h2>
+    <p class="section-sub">Two focused days, built entirely around your district's own priorities.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>Clarity on agentic AI</h3>
+        <p>A clear picture of what agentic AI actually is, and how it differs from the tools you've already tried.</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>Build-vs-buy framework</h3>
+        <p>A practical framework for deciding where to build, where to buy, and where to wait.</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h3>A draft roadmap</h3>
+        <p>A draft roadmap built around your own district's priorities &mdash; not a generic template.</p>
+      </div>
+      <div class="card">
+        <div class="num">4</div>
+        <h3>A peer network</h3>
+        <p>A network of Washington leaders working through the same questions, in the same room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="details" id="details">
+  <div class="wrap">
+    <h2>Event Details</h2>
+    <p class="section-sub">Everything you need to plan your two days in Renton.</p>
+    <div class="details-grid">
+      <div class="detail-item">
+        <div class="label">When</div>
+        <div class="value">September 16&ndash;17, 2026</div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Where</div>
+        <div class="value">Renton, WA <small>Venue confirmed once registration closes</small></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Who should attend</div>
+        <div class="value">District leaders <small>Bring a colleague or two</small></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Cost</div>
+        <div class="value">Free <small>Hosted by your cooperative</small></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Group size</div>
+        <div class="value">Intentionally small <small>Seats are limited</small></div>
+      </div>
+      <div class="detail-item">
+        <div class="label">Hosts</div>
+        <div class="value">Eddi, WSIPC, WSPEF</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA SECTION: placeholder, not for publish yet. Fill in real times/sessions, then remove the style="display:none" below to make it live. -->
+<section class="agenda" id="agenda" style="display:none">
+  <div class="wrap">
+    <h2>Agenda</h2>
+    <p class="section-sub">Take a peek at what's to come &mdash; subject to change.</p>
+    <div class="agenda-grid">
+      <div class="agenda-day">
+        <h3>Day One &middot; September 16</h3>
+        <ul class="agenda-list">
+          <li><span class="time">8:30 AM</span><span class="event">Registration, breakfast, &amp; Welcome</span></li>
+          <li><span class="time">9:00 AM</span><span class="event">Framing: What agentic AI is (and isn't)</span></li>
+          <li><span class="time">10:30 AM</span><span class="event">Break</span></li>
+          <li><span class="time">11:00 AM</span><span class="event">Build-vs-buy framework</span></li>
+          <li><span class="time">12:30 PM</span><span class="event">Lunch</span></li>
+          <li><span class="time">1:30 PM</span><span class="event">Roadmap workshop, part one</span></li>
+          <li><span class="time">4:30 PM</span><span class="event">Day one wrap-up</span></li>
+        </ul>
+      </div>
+      <div class="agenda-day">
+        <h3>Day Two &middot; September 17</h3>
+        <ul class="agenda-list">
+          <li><span class="time">8:30 AM</span><span class="event">Breakfast</span></li>
+          <li><span class="time">9:00 AM</span><span class="event">Peer case studies</span></li>
+          <li><span class="time">10:30 AM</span><span class="event">Break</span></li>
+          <li><span class="time">11:00 AM</span><span class="event">Roadmap workshop, part two</span></li>
+          <li><span class="time">12:30 PM</span><span class="event">Lunch</span></li>
+          <li><span class="time">1:30 PM</span><span class="event">Present your roadmap</span></li>
+          <li><span class="time">3:00 PM</span><span class="event">Closing &amp; next steps</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Seats are limited &mdash; we're locking in the venue soon</h2>
+    <p>Your registration is what lets us confirm the room. Reserve your spot, and bring a colleague if you can.</p>
+    <a class="btn" href="https://rizta.share.hsforms.com/2N2P-NY6SSoq2KuOa0isfAg" target="_blank" rel="noopener">Register Now</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="partners">Eddi &middot; WSIPC &middot; WSPEF</div>
+  </div>
+</footer>
+
+</body>
+</html>
